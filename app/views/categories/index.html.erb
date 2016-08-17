@@ -1,0 +1,8 @@
+<%= @categories.count %> <br/>
+<br/>
+<br/>
+
+<% @categories.each do |c| %>
+<%= link_to c.name, category_path(c.id)  %> <br />
+
+<%end%>

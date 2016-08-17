@@ -1,0 +1,40 @@
+Display Place<br /><br />
+
+<b>ID </b><%= @place.id %><br />
+<b>Name </b><%= @place.name %><br />
+<b>Description </b><%= @place.description %><br />
+<b>Category: </b><%= @place.category.name %>
+<b>Customer: </b><%= @place.customer.email %> | <%= @place.customer.id %><br />
+
+<br/><br/><br />
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Comments
+  </div>
+  <div class="panel-body">
+
+    <% @place.comments.each do |comment| %>
+      <p><%= comment.body %></p>
+    <% end %>
+
+  </div>
+</div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    Send a new comment
+  </div>
+  <div class="panel-body">
+    <%= form_for [@place, @place.comments.build] do |f| %>
+      <%= f.text_area :body, rows: 5 %><br>
+      <%= f.submit 'Send' %>
+    <% end %>
+  </div>
+</div>
+<br/><br/>
+<%= link_to "Back to place list", places_path %>
+<br/>
+<%= link_to "Edit place", edit_place_path(@place) %>
+<br/>
+<%= link_to "Sil", place_path(@place), method: :delete %>

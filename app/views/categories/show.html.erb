@@ -1,0 +1,10 @@
+<h1><%= @category.name %></h1>
+
+  <% @category.places.each do |place| %> <br/>
+  <b>ID </b><%= place.id %>
+  <b>Name </b>
+  <%= link_to place.name, idea_path(place) %>
+  <b>Description </b><%= place.description %><br>
+<% end %>
+
+  
